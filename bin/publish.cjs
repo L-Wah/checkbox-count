@@ -3,7 +3,7 @@ const { exec } = require("child_process");
 const path = require("path");
 
 // 指定要切换到的目录
-const targetDirectory = path.resolve(__dirname, "../dist/vue-checkbox-count");
+const targetDirectory = path.resolve(__dirname, "../dist");
 
 // 构建npm publish命令
 const publishCommand = "npm publish";

@@ -9,6 +9,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/L-Wah/checkbox-count"
+  },
+  "bugs": {
+    "url": "https://github.com/L-Wah/checkbox-count/issues"
+  },
+  "homepage": "https://l-wah.github.io/checkbox-count/",
   "keywords": [
     "vue3",
     "checkbox",

@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build": "vue-tsc && vite build",
     "analyzer": "cross-env use_analyzer=true vite build",
-    "publish": "node bin/publish.cjs",
-    "build": "vue-tsc && node bin/updateVersion.cjs && vite build && npm run publish"
+    "publish": "vue-tsc && node bin/updateVersion.cjs && vite build && npm run publish"
   },
   "dependencies": {
     "prismjs": "^1.29.0",

@@ -58,7 +58,7 @@ export default defineConfig(({ command, mode }) => {
     },
     build: process.env.use_analyzer
       ? {
-          outDir: path.resolve(__dirname, "./dist/web"), //输出文件名称
+          outDir: path.resolve(__dirname, "./docs"), //输出文件名称
           rollupOptions: {
             output: {
               chunkFileNames: "static/js/[name]-[hash].js",
@@ -68,7 +68,7 @@ export default defineConfig(({ command, mode }) => {
           },
         }
       : {
-          outDir: path.resolve(__dirname, "./dist/vue-checkbox-count"), //输出文件名称
+          outDir: path.resolve(__dirname, "./dist"), //输出文件名称
           lib: {
             entry: path.resolve(__dirname, "./src/components/checkbox-count/index.ts"), //指定组件编译入口文件
             name: "checkbox-count",

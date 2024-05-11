@@ -1,0 +1,20 @@
+{
+  "name": "vue-checkbox-count",
+  "private": false,
+  "version": "1.0.9",
+  "description": "一个下拉多选框组件，能统计超出父组件长度部分的溢出个数，适用于Vue",
+  "main": "checkbox-count.js",
+  "type": "module",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue3",
+    "checkbox",
+    "checkbox-count",
+    "vue-checkbox-count"
+  ],
+  "author": "jayce-wah",
+  "license": "MIT"
+}

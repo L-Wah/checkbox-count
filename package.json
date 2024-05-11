@@ -1,0 +1,32 @@
+{
+  "name": "checkbox-count",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "analyzer": "cross-env use_analyzer=true vite build",
+    "publish": "node bin/publish.cjs",
+    "build": "vue-tsc && node bin/updateVersion.cjs && vite build && npm run publish"
+  },
+  "dependencies": {
+    "prismjs": "^1.29.0",
+    "sass": "^1.75.0",
+    "vue": "^3.4.21",
+    "vue-checkbox-count": "^1.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/prismjs": "^1.26.4",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-prismjs": "^0.0.11",
+    "vite-plugin-vue-devtools": "^7.1.2",
+    "vue-tsc": "^2.0.6"
+  }
+}

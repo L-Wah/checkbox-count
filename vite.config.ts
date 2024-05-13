@@ -5,7 +5,6 @@ import autoprefixer from "autoprefixer";
 import path from "path";
 import dts from "vite-plugin-dts";
 import { visualizer } from "rollup-plugin-visualizer";
-import prismjs from "vite-plugin-prismjs";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -31,13 +30,7 @@ export default defineConfig(({ command, mode }) => {
             gzipSize: true, //从源代码中收集 gzip 大小并将其显示在图表中
             brotliSize: true, //从源代码中收集 brotli 大小并将其显示在图表中
           })
-        : null,
-      prismjs({
-        languages: "all", // 语言
-        plugins: ["line-numbers", "copy-to-clipboard"], //官网有其他功能,这里开启行数和复制按钮功能
-        theme: "OKAIDIA", // 主题
-        css: true,
-      }),
+        : null
     ],
     css: {
       postcss: {

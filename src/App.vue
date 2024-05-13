@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
-import Prism from "prismjs";
-
-onMounted(() => {
-  Prism.highlightAll();
-});
+import { ref, computed } from "vue";
 const list = [
   {
     id: "Tom",
@@ -20,7 +15,6 @@ const list = [
   },
   {
     id: "Adam",
-    disabled: null,
   },
   {
     id: "Eve",
@@ -54,41 +48,11 @@ const closed = () => {
 // const change = (e: any) => {
 //   console.log("change", e);
 // };
-const basic = ref(`<script setup lang="ts">
-const list = [
-  {
-    id: "Tom",
-  },
-  {
-    id: "Jerry",
-  },
-  {
-    id: "Lewis",
-  },
-  {
-    id: "Shelly",
-  },
-  {
-    id: "Adam",
-    disabled: null,
-  },
-  {
-    id: "Eve",
-    disabled: true,
-  }
-]
-<\/script>
-<template>
-  <CheckboxCount v-model="value" :list="list" name="id" />
-</template>`);
 
 const value = ref([]);
 const selected = ref(["Tom"]);
 const dataList = computed(() => {
   return selected.value.map((item) => {
-    if (item === "Adam") {
-      return { id: item, disabled: null };
-    }
     if (item === "Eve") {
       return { id: item, disabled: true };
     }
@@ -120,13 +84,13 @@ const disabledName = computed(() => {
     <h1><em>vue-checkbox-count</em></h1>
     <br />
 
-    <pre style="user-select: text; width: 80vw"><code class="language-js line-numbers">{{ basic }}</code></pre>
-    <br />
-
     <div>
       <div v-for="(item, i) in list" :key="i" style="margin-bottom: 5px">
         <input style="transform: scale(1.5)" type="checkbox" :id="item.id" :value="item.id" v-model="selected" />
-        <label :for="item.id">&nbsp&nbsp&nbsp&nbsp{{ item.id }}</label>
+        <label :for="item.id">
+          <span>&nbsp;&nbsp;&nbsp;&nbsp{{ item.id }}</span>
+          <span v-if="item.id === 'Eve'">&nbsp;&nbsp（此项disabled值为true）</span>
+        </label>
       </div>
     </div>
     <br />
@@ -136,7 +100,7 @@ const disabledName = computed(() => {
     <em style="color: red">效果请使用移动端模式查看</em>
     <br />
     <div style="display: flex; justify-content: center">
-      <CheckboxCount v-model="value" :list="dataList" name="id" />
+      <CheckboxCount v-model="value" :list="dataList" name="id" checkbox-disabled-name="disabled" />
     </div>
     <br />
 
@@ -162,10 +126,10 @@ const disabledName = computed(() => {
       v-if="showCreate"
       type="button"
       value="创建新组件"
-      style="background-color: navajowhite; transform: scale(1.5)"
+      style="background-color: navajowhite; transform: scale(1.5); height: 25px"
       @click="created = !created"
     />
-    <div v-else>{{ text }}</div>
+    <div v-else style="height: 25px">{{ text }}</div>
 
     <div v-if="!created">
       <br />

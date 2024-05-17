@@ -10,9 +10,8 @@
     "publish": "vue-tsc && node bin/updateVersion.cjs && vite build && node bin/publish.cjs"
   },
   "dependencies": {
-    "sass": "^1.75.0",
     "vue": "^3.4.21",
-    "vue-checkbox-count": "^1.0.9"
+    "vue-checkbox-count": "^1.0.11"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
@@ -20,6 +19,7 @@
     "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
     "rollup-plugin-visualizer": "^5.12.0",
+    "sass": "^1.75.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.9.1",

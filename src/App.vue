@@ -77,6 +77,7 @@ const directionDown = ref(true);
 const disabledName = computed(() => {
   return checkboxDisabledName.value ? "disabled" : "";
 });
+const max = ref(1);
 </script>
 
 <template>
@@ -85,7 +86,7 @@ const disabledName = computed(() => {
     <br />
 
     <div>
-      <div v-for="(item, i) in list" :key="i" style="margin-bottom: 5px">
+      <div v-for="(item, i) in list" :key="i" class="list">
         <input style="transform: scale(1.5)" type="checkbox" :id="item.id" :value="item.id" v-model="selected" />
         <label :for="item.id">
           <span>&nbsp;&nbsp;&nbsp;&nbsp{{ item.id }}</span>
@@ -157,6 +158,12 @@ const disabledName = computed(() => {
         <div>&nbsp;&nbsp;</div>
         <div>{{ zIndex }}</div>
       </div>
+      <h3>max：最大选项可选数（最大值为list数组长度）</h3>
+      <div style="display: flex">
+        <input type="range" min="1" :max="dataList.length" step="1" v-model="max" />
+        <div>&nbsp;&nbsp;</div>
+        <div>{{ max }}</div>
+      </div>
       <br />
 
       <h3>Disabled：</h3>
@@ -224,6 +231,7 @@ const disabledName = computed(() => {
       :placeholderText="placeholderText"
       :checkboxDisabledName="disabledName"
       :directionDown="directionDown"
+      :max="max"
       @open="open"
       @close="close"
       @closed="closed"
@@ -256,6 +264,10 @@ const disabledName = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .list {
+    margin-bottom: 5px;
+  }
 
   // 自定义内容
   .home {

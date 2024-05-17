@@ -90,8 +90,6 @@ const value = ref([]);
 
 ## 自定义多选框图标
 
-可以通过 slotProps 判断是否为选中状态。
-
 ```vue
 <template>
   <CheckboxCount v-model="value" :list="list" name="id">
@@ -133,6 +131,7 @@ const value = ref([]);
 | placeholder-text       | 占位文字                                | string               | "Select"  |
 | name                   | 标识符，唯一的字符串                    | string               | ""        |
 | checkbox-disabled-name | 标识符，根据此属性判断是否禁用复选框    | string               | ""        |
+| max                    | 最大选项可选数，-1 为无限制             | string &#124; number | -1        |
 
 ### Events
 
@@ -143,6 +142,13 @@ const value = ref([]);
 | close  | 关闭菜单栏时触发              | -        |
 | opened | 打开菜单栏且动画结束后触发    | -        |
 | closed | 关闭菜单栏且动画结束后触发    | -        |
+
+### slotProps
+
+| 参数     | 说明                               | 类型    | 默认值 |
+| -------- | ---------------------------------- | ------- | ------ |
+| checked  | 是否选中当前项                     | boolean | false  |
+| listItem | 当前项数据（仅#checkboxText 生效） | string  | -      |
 
 ### updateScroll 方法
 

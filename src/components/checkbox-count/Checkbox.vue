@@ -58,6 +58,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  max: {
+    type: [Number, String],
+    default: -1,
+  },
 });
 
 const text = computed(() => {
@@ -69,7 +73,7 @@ const checked = computed(() => {
 });
 
 const disabled = computed(() => {
-  return Boolean(props.item[props.checkboxDisabledName]);
+  return Boolean(props.item[props.checkboxDisabledName]) || (Number(props.max) === props.list.length && !props.list.includes(text.value));
 });
 </script>
 

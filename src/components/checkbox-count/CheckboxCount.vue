@@ -80,10 +80,14 @@
           v-for="(item, i) in dataList"
           :key="i"
           class="item"
-          :class="{ 'item-disabled': item[props.checkboxDisabledName] }"
+          :class="{
+            'item-disabled':
+              item[props.checkboxDisabledName] ||
+              (Number(max) === checkbox.length && (name ? !checkbox.includes(item[name]) : !checkbox.includes(i))),
+          }"
           @click="checkboxChange(item, i)"
         >
-          <Checkbox :list="checkbox" :item="item" :index="i" :name="name" :checkboxDisabledName="checkboxDisabledName">
+          <Checkbox :list="checkbox" :item="item" :index="i" :name="name" :checkboxDisabledName="checkboxDisabledName" :max="max">
             <template #checkboxIcon>
               <slot name="checkboxIcon" :checked="name ? checkbox.includes(item[name]) : checkbox.includes(i)"></slot>
             </template>
@@ -124,6 +128,7 @@ defineOptions({
  * @param placeholderText 占位文字，默认Select
  * @param name 标识符，用于显示列表数据文本
  * @param checkboxDisabledName 标识符，根据此属性判断是否禁用复选框
+ * @param max 最大选项可选数，-1 为无限制
  */
 const props = defineProps({
   modelValue: {
@@ -184,6 +189,10 @@ const props = defineProps({
   checkboxDisabledName: {
     type: String,
     default: "",
+  },
+  max: {
+    type: [Number, String],
+    default: -1,
   },
 });
 
@@ -461,12 +470,12 @@ onUnmounted(() => {
 });
 
 const checkboxChange = (item: { [x: string]: any }, i: number | string) => {
-  if (item[props.checkboxDisabledName]) {
+  const { name } = props;
+  let id = name ? item[name] : i;
+  if (item[props.checkboxDisabledName] || (Number(props.max) === checkbox.value.length && !checkbox.value.includes(id))) {
     return;
   }
   emit("change", item);
-  const { name } = props;
-  let id = name ? item[name] : i;
 
   if (checkbox.value.includes(id)) {
     // 取消选中
